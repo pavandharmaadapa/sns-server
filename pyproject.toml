@@ -1,0 +1,63 @@
+# # `pyproject.toml` -- define SNS server dependencies and configuration
+
+[tool.poetry]
+name = "sns-server"
+version = "0.1.0"
+description = "A server providing a simple social networking service."
+authors = ["Bryan A. Jones <bjones1@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = { version = ">=0.115", extras = ["standard"] }
+sqlmodel = ">=0.0.22"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = ">=7"
+black = ">=24"
+isort = ">=5"
+mypy = ">=1"
+pytest = ">=8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# ## Scripts
+#
+# See [scripts](https://python-poetry.org/docs/pyproject/#scripts).
+[tool.poetry.scripts]
+sns-server = 'sns-server.__main__:main'
+
+
+# ## mypy configuration
+#
+# To run, execute `mypy` from the directory containing this file.
+#
+# This section
+# [must](https://mypy.readthedocs.io/en/stable/config_file.html#config-file-format)
+# be present.
+[tool.mypy]
+# See
+# [files](https://mypy.readthedocs.io/en/stable/config_file.html#confval-files).
+files = "."
+exclude = ""
+check_untyped_defs = true
+disallow_untyped_defs = true
+
+# ### Ignores for libraries with no type hints
+[[tool.mypy.overrides]]
+module = [
+]
+ignore_missing_imports = true
+
+
+# ## isort configuration
+[tool.isort]
+# See
+# [Compatibility with black](https://pycqa.github.io/isort/docs/configuration/black_compatibility.html).
+profile = "black"
+# See the
+# [docs](https://pycqa.github.io/isort/docs/configuration/options.html#skip-gitignore).
+skip_gitignore = true

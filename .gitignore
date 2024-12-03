@@ -1,0 +1,6 @@
+# # `.gitignore` -- files for Git to ignore
+#
+# Python files
+**/__pycache__/
+
+# CodeChat Editor lexer: python
